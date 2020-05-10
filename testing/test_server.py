@@ -1,9 +1,10 @@
-import pytest
-import io
+try:
+    from http_parser.parser import HttpParser
+except:
+    from http_parser.pyparser import HttpParser
 
-from http_parser.http import HttpStream
-from http_parser.parser import HttpParser
 from http_parser.pyparser import HttpParser as PyHttpParser
+
 
 def _test_no_headers(parser):
     assert not parser.is_headers_complete()
@@ -15,8 +16,10 @@ def _test_no_headers(parser):
     assert parser.is_message_complete()
     assert not parser.get_headers()
 
+
 def test_server_no_headers():
     _test_no_headers(HttpParser())
+
 
 def test_server_no_headers_py():
     _test_no_headers(PyHttpParser())

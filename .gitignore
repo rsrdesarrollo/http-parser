@@ -1,3 +1,5 @@
+*.class
+*.pyd
 *.gem
 *.swp
 *.pyc
@@ -20,3 +22,6 @@ doc/.sass-cache
 http_parser/__pycache__
 MANIFEST
 .pytest_cache/
+
+.idea
+.jython_cache

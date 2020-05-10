@@ -350,7 +350,7 @@ class HttpParser(object):
             if curr.find(":") < 0:
                 raise InvalidHeader("invalid line %s" % curr.strip())
             name, value = curr.split(":", 1)
-            name = name.rstrip(" \t").upper()
+            name = name.rstrip(" \t")
             if HEADER_RE.search(name):
                 raise InvalidHeader("invalid header name %s" % name)
 

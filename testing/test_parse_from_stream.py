@@ -1,11 +1,11 @@
-from errno import EINTR, EAGAIN, EWOULDBLOCK
-
-import os
 import socket
 
 import pytest
+from errno import EAGAIN
+
 from http_parser.http import HttpStream
 from http_parser.reader import SocketReader
+
 
 class FakeInputSocket(object):
     def __init__(self, events):
@@ -31,6 +31,7 @@ class FakeInputSocket(object):
 
 
 complete_request = b'GET /test HTTP/1.1\r\nContent-Type: text\r\n\r\n'
+
 
 def tostream(input):
     sock = FakeInputSocket(input)
