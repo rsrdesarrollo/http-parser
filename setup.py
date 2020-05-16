@@ -15,6 +15,7 @@ import os
 import shutil
 import sys
 import traceback
+import platform
 
 from setuptools import setup, find_packages, Extension
 
@@ -31,6 +32,7 @@ if sys.platform == 'win32' and sys.version_info > (2, 6):
 http_parser = load_source("http_parser", os.path.join("http_parser",
         "__init__.py"))
 
+IS_JYTHON = 'java' in platform.system().lower()
 IS_PYPY = hasattr(sys, 'pypy_version_info')
 CLASSIFIERS = [
         'Development Status :: 4 - Beta',
@@ -169,4 +171,4 @@ def run_setup(with_binary):
 
 
 if __name__ == "__main__":
-    run_setup(not IS_PYPY)
+    run_setup(not IS_PYPY and not IS_JYTHON)
